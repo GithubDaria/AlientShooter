@@ -11,11 +11,10 @@ public class Allient : MonoBehaviour
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private Color originalColor;
 
-    public Color flashColor = Color.red;  // Color to flash
-    public float flashDuration = 0.1f;   // Duration of the flash
+    public Color flashColor = Color.red;  
+    public float flashDuration = 0.1f;   
     private void Start()
     {
-        // Cache the Renderer and original material color
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         originalColor = skinnedMeshRenderer.material.color;
         AlientAnimatorController = GetComponent<Animator>();
@@ -29,10 +28,8 @@ public class Allient : MonoBehaviour
     {
         if (skinnedMeshRenderer == null) return;
 
-        // Change the material color to the flash color
         skinnedMeshRenderer.material.color = flashColor;
 
-        // Reset the color after a delay
         Invoke(nameof(ResetColor), flashDuration);
     }
 
@@ -40,7 +37,6 @@ public class Allient : MonoBehaviour
     {
         if (skinnedMeshRenderer == null) return;
 
-        // Revert to the original color
         skinnedMeshRenderer.material.color = originalColor;
     }
 }
